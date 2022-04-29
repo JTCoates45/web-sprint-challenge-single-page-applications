@@ -3,6 +3,7 @@ import * as yup from 'yup';
 const schema = yup.object().shape({
     name: yup
     .string()
+    .trim()
     .required('Name is required!')
     .min(2, "name must be at least 2 characters"),
     email: yup
@@ -14,10 +15,12 @@ const schema = yup.object().shape({
     .oneOf(['Kids', 'Small', 'Medium', 'Large',], 'What size would you like your pizza?'),
     address:yup
     .string(),
-    Bacon: yup.boolean(),
-    Pineapple: yup.boolean(),
-    Sardines: yup.boolean(),
-    Anchovies: yup.boolean()
+    specialText:yup
+    .string(),
+    bacon: yup.boolean(),
+    pineapple: yup.boolean(),
+    sardines: yup.boolean(),
+    anchovies: yup.boolean()
 })
 
 export default schema;

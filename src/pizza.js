@@ -17,7 +17,7 @@ export default function Pizza(props){
         evt.preventDefault()
         submit()
     }
-
+    console.log(errors)
     const onChange = evt => {
         const {name,value,checked,type} = evt.target;
         const valueToUse = type === 'checkbox' ? checked: value;
@@ -28,12 +28,12 @@ export default function Pizza(props){
         <form className='form container' id='pizza-form' onSubmit={onSubmit}>
          <div className='form inputs' id='name-inputs'>
         
-        <button disabled={disabled}>submit</button>
+        <button id='order-button' disabled={disabled}>submit</button>
 
         <div className='errors'>
-          <div>{errors.username}</div>
+          <div>{errors.name}</div>
           <div>{errors.email}</div>
-          <div>{errors.adress}</div>
+          <div>{errors.address}</div>
         </div>
       </div> 
             <div className='name-inputs'>
@@ -57,6 +57,25 @@ export default function Pizza(props){
                  onChange={onChange}
                     />
              </label>
+             <label>Address:
+                 <input 
+                 id='name-input'
+                 name='address'
+                 type='text'
+                 value={values.address}
+                 onChange={onChange}
+                    />
+             </label>
+
+             <label>SpecialText:
+                 <input 
+                 type='text'
+                 id='special-text'
+                 name='specialText'
+                 value={values.specialText}
+                 onChange={onChange}
+                    />
+                </label>
              <label>
                 Size:
             <select id="size-dropdown" name="size" value={values.dropdown} onChange={onChange}>
@@ -91,14 +110,16 @@ export default function Pizza(props){
                  onChange={onChange}
                     />
              </label>
+
              <label>Sardines:
                  <input 
                  type='checkbox'
                  name='sardines'
-                 value={values.sardine}
+                 value={values.sardines}
                  onChange={onChange}
                     /> 
              </label>
+
              <label>Anchovies:
                  <input 
                  type='checkbox'

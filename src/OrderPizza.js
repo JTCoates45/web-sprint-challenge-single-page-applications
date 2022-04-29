@@ -9,7 +9,7 @@ function OrderPizza({ details }) {
     <div className='pizza container'>
       <h2>{details.name}</h2>
       <p>Email: {details.email}</p>
-      <p>Role: {details.address}</p>
+      <p>Address: {details.address}</p>
       <p>Size: {details.size}</p>
 
       {

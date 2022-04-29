@@ -11,7 +11,8 @@ import axios from 'axios';
 const initialFormValues = {
   name: '',
   email: '',
-  adrress: '',
+  address: '',
+  specialText: '',
   size: '',
   Bacon: false,
   Pineapple: false,
@@ -24,6 +25,7 @@ const initialFormErrors = {
   email: '',
   address: '',
   size: '',
+  specialText: '',
 }
 
 const initialPizzas = []
@@ -35,12 +37,12 @@ const App = () => {
     const [pizza, setPizza] = useState(initialPizzas)
     const [disabled, setDisabled] = useState(initialDisabled)
 
-    const getPizza = () => {
-      axios.get(`https://reqres.in/api/orders`)
-        .then(res => {
-          setPizza(res.data);
-        }).catch(err => console.error(err))
-    }
+    // const getPizza = () => {
+    //   axios.get(`https://reqres.in/api/orders`)
+    //     .then(res => {
+    //       setPizza(res.data);
+    //     }).catch(err => console.error(err))
+    // }
 
 
   const postNewPizza = newPizza => {
@@ -71,16 +73,18 @@ const App = () => {
       name: formValues.name.trim(),
       email: formValues.email.trim(),
       address: formValues.address.trim(),
+      specialText: formValues.specialText.trim(),
       size: formValues.size,
-      bacon: formValues.bacon,
-      pineapple: formValues.pineapple,
-      sardines: formValues.sardines,
-      anchovies: formValues.anchovies,
+      bacon: formValues.Bacon,
+      Pineapple: formValues.Pineapple,
+      sardines: formValues.Sardines,
+      anchovies: formValues.Anchovies,
     }
     postNewPizza(newPizza);
   }
 
   useEffect(() => {
+    // getPizza()
     schema.isValid(formValues).then(valid => setDisabled(!valid))
   }, [formValues])
 
