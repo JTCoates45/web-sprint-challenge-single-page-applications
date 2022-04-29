@@ -10,20 +10,33 @@ export default function Pizza(props){
         submit,
         change,
         disabled,
+        errors,
     } = props;
+
     const onSubmit = evt => {
         evt.preventDefault()
         submit()
     }
+
     const onChange = evt => {
         const {name,value,checked,type} = evt.target;
         const valueToUse = type === 'checkbox' ? checked: value;
         change(name, valueToUse);
     }
+
     return (
         <form className='form container' id='pizza-form' onSubmit={onSubmit}>
          <div className='form inputs' id='name-inputs'>
+        
+        <button disabled={disabled}>submit</button>
 
+        <div className='errors'>
+          <div>{errors.username}</div>
+          <div>{errors.email}</div>
+          <div>{errors.adress}</div>
+        </div>
+      </div> 
+            <div className='name-inputs'>
              <h1>Pizza Maker</h1>
              <h2> Contact Information</h2>
              <label>Name:
@@ -55,8 +68,8 @@ export default function Pizza(props){
                     
 
                 </select>
-            </label> 
-                </div>
+                </label> 
+        </div>
             <div className='toppings checkboxes'>
             <h2>Toppings</h2>
 

@@ -90,7 +90,6 @@ const App = () => {
     <div className ='App'>
     <nav>
       <Link to ='/'>Home</Link>
-      
     </nav>
     <Switch>
     <Route exact path={'/'} >
@@ -102,16 +101,17 @@ const App = () => {
       
       </Route>
       <Route path={'/pizza'}>
-        <OrderPizza
+        <Pizza
         values={formValues}
         change={inputChange}
         submit={formSubmit}
         disabled={disabled}
+        errors={formErrors}
         />
         {
         pizza.map(pizza => {
           return (
-            <Pizza key={pizza.id} details={pizza} />
+            <OrderPizza key={pizza.id} details={pizza} />
           )
         })
       }
