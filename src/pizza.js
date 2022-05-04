@@ -17,7 +17,7 @@ export default function Pizza(props){
         evt.preventDefault()
         submit()
     }
-    console.log(errors)
+   
     const onChange = evt => {
         const {name,value,checked,type} = evt.target;
         const valueToUse = type === 'checkbox' ? checked: value;
